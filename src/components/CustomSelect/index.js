@@ -3,7 +3,7 @@ import CustomSelectOptions from './CustomSelectOptions';
 
 const CustomSelect = ({ children, onChange }) => {
 	const onChangeHandler = e => {
-		//TODO: Perform onChange operations
+		onChange && onChange(e);
 	};
 
 	return <select onChange={onChangeHandler}>{children}</select>;

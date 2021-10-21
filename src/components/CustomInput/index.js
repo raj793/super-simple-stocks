@@ -2,7 +2,7 @@ import React from 'react';
 
 const CustomInput = ({ value, defaultValue, onChange, ...props }) => {
 	const onChangeHandler = e => {
-		//TODO: onChange handler implementation
+		onChange && onChange(e);
 	};
 
 	return (
