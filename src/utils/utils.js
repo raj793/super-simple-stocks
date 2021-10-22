@@ -35,6 +35,20 @@ export const calculateVolumeWeightedPrice = transactions => {
 	return roundToDecimals(tradedPriceQuantitySum / quantitySum, 2);
 };
 
+export const calculateGeometricMean = transactions => {
+	if (transactions.length <= 0) return;
+	let sum = 0;
+
+	transactions.forEach(transaction => {
+		sum += Math.log(transaction.price);
+	});
+
+	sum = sum / transactions.length;
+	sum = Math.exp(sum);
+
+	return roundToDecimals(sum, 2);
+};
+
 export const getTimestampFromPast = minutes => {
 	/* 1 Minute = 60000 ms */
 	return Date.now() - minutes * 60000;

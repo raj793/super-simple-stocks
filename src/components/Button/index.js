@@ -1,8 +1,9 @@
 import React from 'react';
+import './index.css';
 
 const Button = ({ children, ...props }) => {
 	return (
-		<button type='button' {...props}>
+		<button className='button' type='button' {...props}>
 			{children}
 		</button>
 	);

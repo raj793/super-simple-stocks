@@ -1,4 +1,5 @@
 import React from 'react';
+import './index.css';
 
 const CustomInput = ({ value, defaultValue, onChange, ...props }) => {
 	const onChangeHandler = e => {
@@ -11,6 +12,7 @@ const CustomInput = ({ value, defaultValue, onChange, ...props }) => {
 			value={value}
 			defaultValue={defaultValue}
 			onChange={onChangeHandler}
+			className='custom-input'
 		/>
 	);
 };

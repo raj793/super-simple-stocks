@@ -1,0 +1,28 @@
+.button {
+	background: #624de3;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 44px;
+	width: 175px;
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 1;
+	min-height: 44px;
+	padding: 12px 24px;
+	border: none;
+	border-radius: 24px;
+	color: #ffffff;
+}
+
+.button:hover {
+	cursor: pointer;
+	box-shadow: 0px 6px 12px rgba(98, 77, 227, 0.3);
+}
+
+.button:disabled {
+	background: #617798;
+	opacity: 0.5;
+	box-shadow: none;
+	cursor: not-allowed;
+}
