@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { calculateDividendYield, calculatePeRatio } from '../../utils/utils';
 
 const useCalculate = () => {
