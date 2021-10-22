@@ -40,7 +40,7 @@ export const calculateVolumeWeightedPrice = transactions => {
 
 //Does the same thing, but prevents overflow for large datasets
 export const calculateGeometricMean = transactions => {
-	if (transactions.length <= 0) return;
+	if (transactions.length <= 0) return 0;
 	let sum = 0;
 
 	transactions.forEach(transaction => {

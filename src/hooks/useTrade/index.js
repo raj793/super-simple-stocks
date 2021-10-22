@@ -35,7 +35,7 @@ const useTrade = () => {
 		return () => {
 			clearInterval(timer.current);
 		};
-	}, []);
+	}, [transactions]);
 
 	const processTransaction = (input, quantity, type, stock) => {
 		setTransactions(transaction => {
