@@ -21,6 +21,25 @@ export const calculatePeRatio = (price, dividend) => {
 	return roundToDecimals(price / dividend, 2);
 };
 
+export const calculateVolumeWeightedPrice = transactions => {
+	let quantitySum = 0;
+	let tradedPriceQuantitySum = 0;
+
+	transactions.forEach(transaction => {
+		quantitySum += transaction.quantity;
+		tradedPriceQuantitySum += transaction.quantity * transaction.price;
+	});
+
+	if (quantitySum <= 0 || tradedPriceQuantitySum <= 0) return 0;
+
+	return roundToDecimals(tradedPriceQuantitySum / quantitySum, 2);
+};
+
+export const getTimestampFromPast = minutes => {
+	/* 1 Minute = 60000 ms */
+	return Date.now() - minutes * 60000;
+};
+
 const roundToDecimals = (num, decimals) => {
 	return parseFloat(num).toFixed(decimals);
 };

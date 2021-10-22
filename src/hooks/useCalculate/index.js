@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { calculateDividendYield, calculatePeRatio } from '../../utils/utils';
 
-const useCalculate = (initValue = []) => {
-	const [transactions, setTransactions] = useState(initValue);
+const useCalculate = () => {
 	const [calculated, setCalculated] = useState({});
 
 	const calculateData = (price, stock) => {
-		if (!price && price <= 0) return;
+		if (!price || price <= 0) return;
 
 		const { lastDividend, fixedDividend, parValue } = stock;
 
@@ -24,7 +23,7 @@ const useCalculate = (initValue = []) => {
 		});
 	};
 
-	return [transactions, calculated, setTransactions, calculateData];
+	return [calculated, calculateData];
 };
 
 export default useCalculate;
