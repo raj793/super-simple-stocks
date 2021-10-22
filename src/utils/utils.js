@@ -7,7 +7,7 @@ export const calculateDividendYield = (
 	price,
 	type
 ) => {
-	if (type === types.preferred) {
+	if (type === types.preferred && price) {
 		return roundToDecimals((fixedDividend * parValue) / price, 2);
 	} else if (lastDividend > 0) {
 		return roundToDecimals(lastDividend / price, 2);
@@ -17,7 +17,7 @@ export const calculateDividendYield = (
 };
 
 export const calculatePeRatio = (price, dividend) => {
-	if (dividend <= 0) {
+	if (dividend <= 0 || price <= 0) {
 		return 0;
 	}
 
