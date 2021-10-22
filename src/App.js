@@ -127,7 +127,7 @@ function App() {
 						}}
 					/>
 
-					{/* STOCK PRICE INPUT */}
+					{/* TRANSACTION TYPE */}
 					<CustomSelect onChange={typeHandler}>
 						<CustomSelect.Options value={'default'} key={'default'}>
 							BUY/SELL
@@ -158,7 +158,7 @@ function App() {
 						Calculate
 					</Button>
 
-					{/* TRADEE BUTTON */}
+					{/* TRADE BUTTON */}
 					<Button disabled={isTradeActive()} onClick={onTrade}>
 						Trade
 					</Button>
