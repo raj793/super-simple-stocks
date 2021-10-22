@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
 	calculateVolumeWeightedPrice,
 	getTimestampFromPast,
@@ -11,16 +11,31 @@ const useTrade = () => {
 	const [vwsp, setVwsp] = useState(0);
 	/* GM - Geometric Mean */
 	const [gm, setGm] = useState(0);
+	let timer = useRef(null);
 
-	useEffect(() => {
+	const updateVWP = () => {
 		const filteredTransactions = transactions.filter(
 			x => x.ts > getTimestampFromPast(15)
 		);
 		const data = calculateVolumeWeightedPrice(filteredTransactions);
-		const gmData = calculateGeometricMean(transactions);
 		setVwsp(data);
+	};
+
+	useEffect(() => {
+		updateVWP();
+		const gmData = calculateGeometricMean(transactions);
 		setGm(gmData);
 	}, [transactions]);
+
+	//Keeps updating data for the last 15 minutes, every minute
+	useEffect(() => {
+		timer.current = setInterval(() => {
+			updateVWP();
+		}, 1 * 60000);
+		return () => {
+			clearInterval(timer.current);
+		};
+	}, []);
 
 	const processTransaction = (input, quantity, type, stock) => {
 		setTransactions(transaction => {

@@ -1,4 +1,4 @@
-const types = {
+export const types = {
 	common: 'COMMON',
 	preferred: 'PREFERRED',
 };

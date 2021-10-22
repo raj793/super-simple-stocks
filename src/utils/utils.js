@@ -1,10 +1,13 @@
+import { types } from '../constants/stocks';
+
 export const calculateDividendYield = (
 	lastDividend,
 	fixedDividend,
 	parValue,
-	price
+	price,
+	type
 ) => {
-	if (fixedDividend) {
+	if (type === types.preferred) {
 		return roundToDecimals((fixedDividend * parValue) / price, 2);
 	} else if (lastDividend > 0) {
 		return roundToDecimals(lastDividend / price, 2);
@@ -35,6 +38,7 @@ export const calculateVolumeWeightedPrice = transactions => {
 	return roundToDecimals(tradedPriceQuantitySum / quantitySum, 2);
 };
 
+//Does the same thing, but prevents overflow for large datasets
 export const calculateGeometricMean = transactions => {
 	if (transactions.length <= 0) return;
 	let sum = 0;

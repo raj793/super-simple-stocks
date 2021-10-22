@@ -7,14 +7,16 @@ const useCalculate = () => {
 	const calculateData = (price, stock) => {
 		if (!price || price <= 0) return;
 
-		const { lastDividend, fixedDividend, parValue } = stock;
+		const { lastDividend, fixedDividend, parValue, type } = stock;
 
 		const dy = calculateDividendYield(
 			lastDividend,
 			fixedDividend,
 			parValue,
-			price
+			price,
+			type
 		);
+
 		const pe = calculatePeRatio(price, lastDividend);
 
 		setCalculated({

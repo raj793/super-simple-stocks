@@ -52,6 +52,7 @@ function App() {
 	};
 
 	const onTrade = () => {
+		onCalculate();
 		processTransaction(input, quantity, type, stock);
 	};
 
