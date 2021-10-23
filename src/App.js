@@ -89,7 +89,10 @@ function App() {
 					}}
 				>
 					{/* STOCK SELECT LIST */}
-					<CustomSelect onChange={stockSelectHandler}>
+					<CustomSelect
+						onChange={stockSelectHandler}
+						data-testid='stock-list'
+					>
 						<CustomSelect.Options value={'default'} key={'default'}>
 							SELECT STOCK
 						</CustomSelect.Options>
@@ -107,6 +110,7 @@ function App() {
 
 					{/* STOCK PRICE INPUT */}
 					<CustomInput
+						data-testid='input-price'
 						type='number'
 						placeholder='Enter price'
 						value={input}
@@ -118,6 +122,7 @@ function App() {
 
 					{/* STOCK QUANTITY INPUT */}
 					<CustomInput
+						data-testid='input-quantity'
 						type='number'
 						placeholder='Enter quantity'
 						value={quantity}
@@ -128,7 +133,10 @@ function App() {
 					/>
 
 					{/* TRANSACTION TYPE */}
-					<CustomSelect onChange={typeHandler}>
+					<CustomSelect
+						onChange={typeHandler}
+						data-testid='type-list'
+					>
 						<CustomSelect.Options value={'default'} key={'default'}>
 							BUY/SELL
 						</CustomSelect.Options>
@@ -152,6 +160,7 @@ function App() {
 				>
 					{/* CALCULATE BUTTON */}
 					<Button
+						data-testid='button-calculate'
 						disabled={!stock?.symbol || !input}
 						onClick={onCalculate}
 					>
@@ -159,7 +168,11 @@ function App() {
 					</Button>
 
 					{/* TRADE BUTTON */}
-					<Button disabled={isTradeActive()} onClick={onTrade}>
+					<Button
+						disabled={isTradeActive()}
+						onClick={onTrade}
+						data-testid='button-trade'
+					>
 						Trade
 					</Button>
 				</div>
