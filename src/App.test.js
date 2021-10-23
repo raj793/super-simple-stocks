@@ -114,7 +114,7 @@ describe('App', () => {
 		).toBeInTheDocument();
 	});
 
-	it('trades and populates datae', () => {
+	it('trades and populates data', () => {
 		render(<App />);
 
 		const randIntArray = jest.fn().mockReturnValueOnce(new Uint32Array(10));
